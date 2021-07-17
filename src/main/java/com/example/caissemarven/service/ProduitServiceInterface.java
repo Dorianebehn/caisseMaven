@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.caissemarven.repository;
+package com.example.caissemarven.service;
 import com.example.caissemarven.model.Produit;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 /**
  *
  * @author Dory
  */
-@Repository
-public interface ProduitRepository extends JpaRepository <Produit ,Long> {
-    
+public interface ProduitServiceInterface {
+  public Iterable<Produit> findAll();
 }
