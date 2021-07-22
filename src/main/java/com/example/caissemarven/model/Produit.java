@@ -53,9 +53,7 @@ public class Produit implements Serializable{
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPric(Integer price) {
         this.price = price;
     }
-    
-   
 }
