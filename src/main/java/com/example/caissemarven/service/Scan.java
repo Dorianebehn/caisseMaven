@@ -1,7 +1,6 @@
-package com.example.caissemarven.windows;
+package com.example.caissemarven.service;
 
 import java.awt.BorderLayout; 
-
 
 import java.awt.EventQueue;
 import java.util.List;
@@ -36,7 +35,7 @@ import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 
-public class ScanFrame extends JFrame implements Runnable, ThreadFactory {
+public class Scan extends JFrame implements Runnable, ThreadFactory {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -45,19 +44,29 @@ public class ScanFrame extends JFrame implements Runnable, ThreadFactory {
 	
 	private static final long serialVersionUID=6441489157408381878L;
 	private Executor executor= Executors.newSingleThreadExecutor(this);
-	private JPanel panel_1;
 
 	/**
 	 * Launch the application.
 	 */
-	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Scan frame = new Scan();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the frame.
 	 */
-	public ScanFrame() {
+	public Scan() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(300, 300, 505, 375);
+		setBounds(300, 300, 300, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -66,10 +75,15 @@ public class ScanFrame extends JFrame implements Runnable, ThreadFactory {
 		textField = new JTextField();
 		textField.setMaximumSize(new Dimension(10, 10));
 		textField.setMinimumSize(new Dimension(7, 13));
-		contentPane.add(textField, BorderLayout.SOUTH);
+		contentPane.add(textField, BorderLayout.EAST);
 		textField.setColumns(10);
 		
-		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		//contentPane.add(panel, BorderLayout.WEST);
 		initWebcam();
 	}
@@ -83,11 +97,7 @@ public class ScanFrame extends JFrame implements Runnable, ThreadFactory {
 		panel=new WebcamPanel(webcam);
 		panel.setPreferredSize(size);
 		panel.setFPSDisplayed(true);
-		contentPane.add(panel, BorderLayout.WEST);
-		
-		panel_1 = new JPanel();
-		panel_1.setMinimumSize(new Dimension(30, 30));
-		contentPane.add(panel_1, BorderLayout.EAST);
+		contentPane.add(panel); 
 		
 		executor.execute(this);
 		
@@ -138,35 +148,9 @@ public class ScanFrame extends JFrame implements Runnable, ThreadFactory {
 			}
 			
 			if (result != null) {
-				
-				String res = result.getText();
-				JLabel l= new JLabel();
-				//l.setBounds(20);
-				l.setText(res);
-				panel_1.add(l);
-				//label.setText(res);
-				//System.out.println(res);
-				int i=1;
-				for(i=1; i<=5;i++) {
-				String	res1=result.getText();
-					while(res!=res1) {
-						JLabel l2 = new JLabel();
-						//l2.setBounds(20);
-						l2.setText(res1);
-						panel_1.add(l2);
-						
-						//String res = result.getText();
-						System.out.println("good");	
-						i++;
-					}
-					
-				}
-				
-				
-				
-				
-				
-				//Integer idres=Integer.parseInt(id);
+				textField.setText(result.getText());
+				String id=result.getText();
+				Integer idres=Integer.parseInt(id);
 				
 			
 		}
@@ -175,4 +159,4 @@ public class ScanFrame extends JFrame implements Runnable, ThreadFactory {
 	}while (true);
 
 	}
-}
+	}
