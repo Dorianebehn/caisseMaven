@@ -151,7 +151,7 @@ public class ScanFrame extends JFrame implements Runnable, ThreadFactory {
 				String	res1=result.getText();
 					while(res!=res1) {
 						JLabel l2 = new JLabel();
-						l2.setBounds(20, 20, 100, 30);
+						//l2.setBounds(20, 20, 100, 30);
 						l2.setText(res1);
 						panel_1.add(l2, BorderLayout.EAST);
 						
