@@ -34,15 +34,15 @@ public class ProduitService implements ProduitServiceInterface {
             return proRe.findAll();
         }
         
-        public void save (Produit produit){
-            proRe.save(produit);
-        }
+        //public void save (Produit produit){
+          //  proRe.save(produit);
+        //}
         
         public Produit get(Long id){
          return proRe.findById(id).get();
         }
         
-       public void delete(Long id){
-           proRe.deleteById(id);
-       }
+     //  public void delete(Long id){
+       //    proRe.deleteById(id);
+       //}
 }
