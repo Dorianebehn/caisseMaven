@@ -32,10 +32,10 @@ public class Home extends javax.swing.JFrame {
         btnPayer = new javax.swing.JButton();
         btnAnnuler = new javax.swing.JButton();
         panelPanier = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        btnRemove = new javax.swing.JButton();
+        labelPanier = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         labelTotal = new javax.swing.JLabel();
+        btnRemove = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,15 +76,10 @@ public class Home extends javax.swing.JFrame {
 
         panelPanier.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("MON PANIER");
-
-        btnRemove.setBackground(new java.awt.Color(153, 0, 0));
-        btnRemove.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnRemove.setForeground(new java.awt.Color(255, 255, 255));
-        btnRemove.setText("Supprimer");
+        labelPanier.setBackground(new java.awt.Color(255, 255, 255));
+        labelPanier.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        labelPanier.setForeground(new java.awt.Color(0, 0, 0));
+        labelPanier.setText("MON PANIER");
 
         javax.swing.GroupLayout panelPanierLayout = new javax.swing.GroupLayout(panelPanier);
         panelPanier.setLayout(panelPanierLayout);
@@ -92,19 +87,15 @@ public class Home extends javax.swing.JFrame {
             panelPanierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPanierLayout.createSequentialGroup()
                 .addGap(94, 94, 94)
-                .addGroup(panelPanierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRemove)
-                    .addComponent(jLabel1))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addComponent(labelPanier)
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         panelPanierLayout.setVerticalGroup(
             panelPanierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPanierLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
-                .addComponent(btnRemove)
-                .addGap(25, 25, 25))
+                .addComponent(labelPanier)
+                .addContainerGap(279, Short.MAX_VALUE))
         );
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -115,28 +106,37 @@ public class Home extends javax.swing.JFrame {
         labelTotal.setForeground(new java.awt.Color(255, 255, 255));
         labelTotal.setText("Montant a payer");
 
+        btnRemove.setBackground(new java.awt.Color(153, 0, 0));
+        btnRemove.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnRemove.setForeground(new java.awt.Color(255, 255, 255));
+        btnRemove.setText("Supprimer");
+
         javax.swing.GroupLayout panelContainerLayout = new javax.swing.GroupLayout(panelContainer);
         panelContainer.setLayout(panelContainerLayout);
         panelContainerLayout.setHorizontalGroup(
             panelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelContainerLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(panelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelWebcam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelContainerLayout.createSequentialGroup()
-                        .addGroup(panelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelContainerLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(32, 32, 32)
-                                .addComponent(labelTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelContainerLayout.createSequentialGroup()
-                                .addComponent(btnPayer)
-                                .addGap(63, 63, 63)
-                                .addComponent(btnAnnuler)))
-                        .addGap(14, 14, 14)))
+                        .addComponent(btnPayer)
+                        .addGap(78, 78, 78)
+                        .addComponent(btnAnnuler))
+                    .addGroup(panelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(panelWebcam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelContainerLayout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(32, 32, 32)
+                            .addComponent(labelTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(27, 27, 27))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(panelPanier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(panelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelContainerLayout.createSequentialGroup()
+                        .addComponent(panelPanier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelContainerLayout.createSequentialGroup()
+                        .addComponent(btnRemove)
+                        .addGap(83, 83, 83))))
         );
         panelContainerLayout.setVerticalGroup(
             panelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,19 +144,21 @@ public class Home extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(panelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelContainerLayout.createSequentialGroup()
-                        .addComponent(panelPanier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE))
-                    .addGroup(panelContainerLayout.createSequentialGroup()
                         .addComponent(panelWebcam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(panelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(labelTotal))
-                        .addGap(33, 33, 33)))
-                .addGroup(panelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPayer)
-                    .addComponent(btnAnnuler))
-                .addGap(22, 22, 22))
+                        .addGap(33, 33, 33)
+                        .addGroup(panelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnPayer)
+                            .addComponent(btnAnnuler))
+                        .addGap(22, 22, 22))
+                    .addGroup(panelContainerLayout.createSequentialGroup()
+                        .addComponent(panelPanier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRemove)
+                        .addContainerGap(28, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -229,8 +231,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton btnAnnuler;
     private javax.swing.JButton btnPayer;
     private javax.swing.JButton btnRemove;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel labelPanier;
     private javax.swing.JLabel labelTotal;
     private javax.swing.JPanel panelContainer;
     private javax.swing.JPanel panelPanier;
