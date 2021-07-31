@@ -5,25 +5,34 @@
  */
 package com.example.caissemarven.windows;
 
-
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
- 
+import com.example.caissemarven.repository.ProduitRepository;
+import com.example.caissemarven.model.Produit;
+import java.util.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 /**
  *
  * @author user
  */
+
+
 public class Home extends javax.swing.JFrame {
-    
-    
+     
     protected JTextField textField ;
     DefaultListModel model = new DefaultListModel();
+    
+    
+    @Autowired
+   ProduitRepository produitRepository = new ProduitRepository();
+   
     /**
      * Creates new form Home
      */
     public Home() {
-        super("Autmate d'achat");
         initComponents();
     }
 
@@ -36,162 +45,27 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-
-       // panelContainer = new javax.swing.JPanel();
-
-        jPanel3 = new javax.swing.JPanel();
-        separator = new javax.swing.JPanel();
-        labelName = new javax.swing.JLabel();
-        labelEtoile = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        panelResult = new javax.swing.JPanel();
+        panelContainer = new javax.swing.JPanel();
+        panelWebcam = new javax.swing.JPanel();
+        btnPayer = new javax.swing.JButton();
+        btnAnnuler = new javax.swing.JButton();
+        panelPanier = new javax.swing.JPanel();
+        labelPanier = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
         btnRemove = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-//>>>>>>> ff0e9df reprise des frames de shella
-  //      panelWebcam = new javax.swing.JPanel();
-    //    btnPayer = new javax.swing.JButton();
-      //  btnAnnuler = new javax.swing.JButton();
-//<<<<<<< Upstream, based on origin/master
-//        panelPanier = new javax.swing.JPanel();
-  //      labelPanier = new javax.swing.JLabel();
-    //    jLabel2 = new javax.swing.JLabel();
-      //  labelTotal = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        labelTotal = new javax.swing.JLabel();
         btnRemove = new javax.swing.JButton();
-
-
-        btnAjouter =  new javax.swing.JButton("submit");
         textField = new JTextField(10);
-       
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-//        panelContainer.setBackground(new java.awt.Color(0, 0, 0));
-
-//<<<<<<< Upstream, based on origin/master
- //       panelWebcam.setBackground(new java.awt.Color(255, 255, 255));
-
-        separator.setBackground(new java.awt.Color(0, 0, 0));
-
-        labelName.setBackground(new java.awt.Color(255, 255, 255));
-        labelName.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        labelName.setForeground(new java.awt.Color(255, 255, 255));
-        labelName.setText("MON PANIER");
-
-        labelEtoile.setBackground(new java.awt.Color(255, 255, 255));
-        labelEtoile.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        labelEtoile.setForeground(new java.awt.Color(255, 255, 255));
-        labelEtoile.setText("************");
-
-        panelResult.setBackground(new java.awt.Color(255, 204, 204));
-
-        btnRemove.setText("Remove");
-        btnRemove.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoveActionPerformed(evt);
-            }
-        });
-       btnAjouter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAjouterActionPerformed(evt);
-            }
-        });
-           
-          String[] strings = { "ScanProduit","hello" };
-          
-         
-          
-          jList1 = new JList();
-          //int n =5;
-          //for(int i=0;i<n;i++){
-            //String b = "essai"+i;
-             //model.addElement(b);
-             //jList1.setModel(model);
-                     
-               //      }
-        jScrollPane1.setViewportView(jList1);
-
-        javax.swing.GroupLayout panelResultLayout = new javax.swing.GroupLayout(panelResult);
-        panelResult.setLayout(panelResultLayout);
-        panelResultLayout.setHorizontalGroup(
-            panelResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelResultLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(btnRemove)
-                .addGap(56, 56, 56))
-                .addComponent( btnAjouter)
-                .addGap(99, 99, 99)
-                .addComponent( textField)
-                .addGap(55, 55, 55)
-        );
-        panelResultLayout.setVerticalGroup(
-            panelResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelResultLayout.createSequentialGroup()
-                .addGroup(panelResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelResultLayout.createSequentialGroup()
-                        .addGap(209, 209, 209)
-                        .addComponent(textField))
-                    .addGroup(panelResultLayout.createSequentialGroup()
-                        .addGap(209, 209, 209)
-                        .addComponent(btnAjouter))
-                    .addGroup(panelResultLayout.createSequentialGroup()   
-                        .addGap(59, 59, 59)
-                        .addComponent(btnRemove))
-                    .addGroup(panelResultLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 35, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout separatorLayout = new javax.swing.GroupLayout(separator);
-        separator.setLayout(separatorLayout);
-        separatorLayout.setHorizontalGroup(
-            separatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
-            .addGroup(separatorLayout.createSequentialGroup()
-                .addGroup(separatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(separatorLayout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jLabel3))
-                    .addGroup(separatorLayout.createSequentialGroup()
-                        .addGap(176, 176, 176)
-                        .addComponent(labelName))
-                    .addGroup(separatorLayout.createSequentialGroup()
-                        .addGap(191, 191, 191)
-                        .addComponent(labelEtoile))
-                    .addGroup(separatorLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(panelResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
-        separatorLayout.setVerticalGroup(
-            separatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(separatorLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(labelName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(labelEtoile)
-                .addGap(12, 12, 12)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(286, Short.MAX_VALUE))
-        );
-
-        /*jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("SCANNER PRODUIT");**/
+        btnAjouter =  new javax.swing.JButton("submit");
         
-        
-    }
-//>>>>>>> ff0e9df reprise des frames de shella
+        panelContainer.setBackground(new java.awt.Color(0, 0, 0));
 
-  /*      javax.swing.GroupLayout panelWebcamLayout = new javax.swing.GroupLayout(panelWebcam);
+        panelWebcam.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout panelWebcamLayout = new javax.swing.GroupLayout(panelWebcam);
         panelWebcam.setLayout(panelWebcamLayout);
         panelWebcamLayout.setHorizontalGroup(
             panelWebcamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,29 +95,73 @@ public class Home extends javax.swing.JFrame {
                 btnAnnulerActionPerformed(evt);
             }
         });
-
+         btnAjouter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAjouterActionPerformed(evt);
+            }
+        });
         panelPanier.setBackground(new java.awt.Color(255, 255, 255));
 
         labelPanier.setBackground(new java.awt.Color(255, 255, 255));
         labelPanier.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        labelPanier.setForeground(new java.awt.Color(0, 0, 0));
         labelPanier.setText("MON PANIER");
+
+         
+          //String[] strings = { "ScanProduit","hello" };
+          
+         
+          
+          jList2 = new JList();
+        jScrollPane2.setViewportView(jList2);
+
+        btnRemove.setText("Remove");
+        btnRemove.setToolTipText("");
+        btnRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelPanierLayout = new javax.swing.GroupLayout(panelPanier);
         panelPanier.setLayout(panelPanierLayout);
         panelPanierLayout.setHorizontalGroup(
             panelPanierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPanierLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnRemove)
+                .addGap(87, 87, 87))
             .addGroup(panelPanierLayout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(labelPanier)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addGroup(panelPanierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelPanierLayout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(labelPanier))
+                    .addGroup(panelPanierLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(19, 19, 19)    
+                        .addComponent( btnAjouter)
+                        .addGap(15, 15, 15)
+                        .addComponent( textField)
+                        .addGap(5, 5, 5)
+        
+                    .addContainerGap(27, Short.MAX_VALUE))
         );
         panelPanierLayout.setVerticalGroup(
             panelPanierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPanierLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(labelPanier)
-                .addContainerGap(279, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                 .addGap(19, 19, 19)
+                 .addComponent(btnRemove)
+               
+                .addGap(29, 29, 29)
+                .addComponent(textField)
+                // .addGroup(panelResultLayout.createSequentialGroup()
+                 .addGap(29, 29, 29)
+                 .addComponent(btnAjouter))         
         );
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -329,58 +247,66 @@ public class Home extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-<<<<<<< Upstream, based on origin/master
-=======
-        
->>>>>>> ff0e9df reprise des frames de shella
     private void btnPayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayerActionPerformed
         // TODO add your handling code here:
         Payment pay = new Payment();
         pay.setVisible(true);
-    }//GEN-LAST:event_btnPayerActionPerformed**/
-    
-    
-    private void btnAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayerActionPerformed
-        // TODO add your handling code here:
-        String evenement = evt.getActionCommand();
-        if(evenement.equals("submit")){
-            String note = textField.getText();
-            String evaluation = "" ;
-            if(model.contains(note)){
-                System.out.println("Changer de produit");
-            }
-            else {
-                
-             model.addElement(note);
-             jList1.setModel(model);
-          
-            }
-            
-        }
     }//GEN-LAST:event_btnPayerActionPerformed
-
-    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
-        // TODO add your handling code here:
-        int index = jList1.getSelectedIndex();
-            if(index >= 0){ //Remove only if a particular item is selected
-            model.removeElementAt(index);
-    }
-        
-    }//GEN-LAST:event_btnRemoveActionPerformed
 
     private void btnAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnulerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAnnulerActionPerformed
 
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+            int index = jList2.getSelectedIndex();
+            if(index >= 0){ //Remove only if a particular item is selected
+            model.removeElementAt(index);
+            }
+    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayerActionPerformed
+        // TODO add your handling code here:
+        String evenement = evt.getActionCommand();
+        if(evenement.equals("submit")){
+
+            int note = Integer.parseInt(textField.getText());
+            System.out.println("Changer de produit "+note);
+            
+            //List produitall = produitRepository.findAll();
+            
+            
+            Optional produitOptional = produitRepository.findById(note);
+            
+             System.out.println("Changer de produit "+ produitOptional);
+   
+            String produit = Optional.ofNullable(produitOptional)
+            .map(Object::toString)
+            .orElse(null);
+            
+            if(model.contains(produit)){
+                System.out.println("Changer de produit");
+            }
+            else {
+                
+             model.addElement(produit);
+             jList2.setModel(model);
+          System.out.println(produit);
+            }
+            
+        }
+    }//GEN-LAST:event_btnPayerActionPerformed
+
+   
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    
+    /* public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+         *//*
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -399,33 +325,27 @@ public class Home extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the form *//*
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Home().setVisible(true);
            
             }
         });
-    }
+    }**/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnnuler;
     private javax.swing.JButton btnPayer;
     private javax.swing.JButton btnRemove;
-
     private javax.swing.JButton btnAjouter;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel labelEtoile;
-    private javax.swing.JLabel labelName;
-    private javax.swing.JPanel panelResult;
-
-    private javax.swing.JPanel separator;
-   // private   DefaultListModel model;
-
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JList<String> jList2;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel labelPanier;
+    private javax.swing.JLabel labelTotal;
+    private javax.swing.JPanel panelContainer;
+    private javax.swing.JPanel panelPanier;
+    private javax.swing.JPanel panelWebcam;
     // End of variables declaration//GEN-END:variables
 }

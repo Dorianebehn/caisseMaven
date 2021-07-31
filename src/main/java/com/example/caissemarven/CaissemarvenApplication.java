@@ -11,7 +11,7 @@ import com.example.caissemarven.service.ProduitService;
 import com.example.caissemarven.repository.ProduitRepository;
 import com.example.caissemarven.model.HelloWord;
 import com.example.caissemarven.model.Produit;
-import com.example.caissemarven.windows.Panier;
+import com.example.caissemarven.windows.Home;
 import javax.swing.JFrame;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.slf4j.Logger;
@@ -41,7 +41,7 @@ public class CaissemarvenApplication extends JFrame implements CommandLineRunner
         SwingUtilities.invokeLater(() -> {
          java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Panier().setVisible(true);
+                new Home().setVisible(true);
             }
         });
         
@@ -60,10 +60,10 @@ public class CaissemarvenApplication extends JFrame implements CommandLineRunner
        // List listProduit = proSer.listAll();
         //System.out.println(listProduit);
         
-        List listProduit = produitRepository.findAll();
-        System.out.println(listProduit);
+      
         
-       logger.info("Modification-> {}", produitRepository.update(new Produit(2,"barbouche-BR",900,"payed")));
+       //logger.info("Modification-> {}", produitRepository.update(new Produit(2,"barbouche-BR",900,"payed")));
+   logger.info("rechercge-> {}", produitRepository.findById(2));
    
        
        //logger.info("Inserting -> {}", produitRepository.insert(new Produit (3, "Hp-Laptop", 700)));

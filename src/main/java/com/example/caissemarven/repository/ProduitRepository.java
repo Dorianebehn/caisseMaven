@@ -13,8 +13,10 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
+ 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 
@@ -23,13 +25,16 @@ import org.springframework.stereotype.Repository;
  * @author Dory
  */
 @Repository
+
 public class ProduitRepository {
     
     @Autowired
-    JdbcTemplate jdbcTemplate;
+   private JdbcTemplate jdbcTemplate; 
+    
     
     class ProduitRowMapper implements RowMapper <Produit>{
-        @Override
+        
+        @Override 
         public Produit mapRow(ResultSet rs,int rowNum) throws SQLException{
             Produit produit = new Produit();
             produit.setId(rs.getInt("id"));
@@ -60,6 +65,7 @@ public class ProduitRepository {
     }
    
     public Optional < Produit > findByIdPrice(long id) {
+        
         return Optional.of(jdbcTemplate.queryForObject("select price from produit where id=?", new Object[] {
                 id
             },
