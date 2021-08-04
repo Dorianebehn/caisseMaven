@@ -12,24 +12,24 @@ import com.example.caissemarven.repository.ProduitRepository;
 import com.example.caissemarven.model.HelloWord;
 import com.example.caissemarven.model.Produit;
 import com.example.caissemarven.windows.Home;
+import com.example.caissemarven.windows.Principal;
 import javax.swing.JFrame;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.*;
 import javax.swing.*;
+import org.springframework.stereotype.Component;
 
 @SpringBootApplication
+@Component
 public class CaissemarvenApplication extends JFrame implements CommandLineRunner  {
     
 	
     @Autowired
-    private  ProduitRepository produitRepository;
+    private ProduitRepository produitRepository;
     
-    //@Autowired
-   // private ProduitService proSer;
     private Logger logger = LoggerFactory.getLogger(this.getClass());
- 
     private static final Logger log = LoggerFactory.getLogger(CaissemarvenApplication.class);
     
     
@@ -38,37 +38,25 @@ public class CaissemarvenApplication extends JFrame implements CommandLineRunner
 	SpringApplication.run(CaissemarvenApplication.class, args);
          
         System.setProperty("java.awt.headless", "false");
-        SwingUtilities.invokeLater(() -> {
+       
+    }  
+    @Override
+    public void run(String... args) throws Exception {
+     SwingUtilities.invokeLater(() -> {
          java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Home().setVisible(true);
+                 //logger.info("rechercge-> {}", produitRepository.findById(2));
+                
+                new Home( produitRepository).setVisible(true);
             }
         });
         
                 });
-        
-  
-    }  
-
-    
-    @Override
-    public void run(String... args) throws Exception {
-        
-        //HelloWord hey = bs.getHelloWorld();
-        //System.out.println(hey);
-        
-       // List listProduit = proSer.listAll();
-        //System.out.println(listProduit);
-        
-      
-        
-       //logger.info("Modification-> {}", produitRepository.update(new Produit(2,"barbouche-BR",900,"payed")));
-   logger.info("rechercge-> {}", produitRepository.findById(2));
+    /*logger.info("Modification-> {}", produitRepository.update(new Produit(2,"barbouche-BR",900,"payed")));
    
+    logger.info("Inserting -> {}", produitRepository.insert(new Produit (3, "Hp-Laptop", 700,"")));**/
        
-       //logger.info("Inserting -> {}", produitRepository.insert(new Produit (3, "Hp-Laptop", 700)));
-       
-    }
+        }
     
     
     }

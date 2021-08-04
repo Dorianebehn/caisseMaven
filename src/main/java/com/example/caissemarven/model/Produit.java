@@ -5,7 +5,10 @@
  * and open the template in the editor.
  */
 package com.example.caissemarven.model;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 
 
@@ -14,7 +17,10 @@ package com.example.caissemarven.model;
  * @author Dory
  */
 
+@Entity
+
 public class Produit {
+    @Id
     private Integer id;
     private String name;
     private Integer price;
@@ -67,6 +73,6 @@ public class Produit {
 
     
     public String toString(){
-        return id +" "+name+" "+ price+ " "+status;
+        return name+"   -------   "+ price+" FCFA";
     }
 }

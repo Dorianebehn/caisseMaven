@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 import com.example.caissemarven.model.Produit;
 import org.springframework.stereotype.Component;
-import com.example.caissemarven.service.ProduitServiceInterface;
+
 
 /**
  *
@@ -19,7 +19,7 @@ import com.example.caissemarven.service.ProduitServiceInterface;
  */
 @Service("productService")
 @Transactional
-
+@Component
 public class ProduitService implements ProduitServiceInterface {  
         @Autowired
         private ProduitRepository proRe;
@@ -31,16 +31,17 @@ public class ProduitService implements ProduitServiceInterface {
         }
         
         public List<Produit> listAll(){
-            return proRe.findAll();
+           return proRe.findAll();
         }
         
         //public void save (Produit produit){
           //  proRe.save(produit);
         //}
         
-        public Produit get(Long id){
-         return proRe.findById(id).get();
-        }
+        
+        //public Produit get(Integer id){
+         //return proRe.findById(id).get();
+        //}
         
      //  public void delete(Long id){
        //    proRe.deleteById(id);

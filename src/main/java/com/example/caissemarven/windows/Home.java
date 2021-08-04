@@ -5,13 +5,14 @@
  */
 package com.example.caissemarven.windows;
 
-import java.awt.event.*;
-import java.awt.*;
 import javax.swing.*;
 import com.example.caissemarven.repository.ProduitRepository;
+import com.example.caissemarven.service.ProduitService;
 import com.example.caissemarven.model.Produit;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
 
 /**
@@ -19,20 +20,25 @@ import org.springframework.stereotype.Component;
  * @author user
  */
 
-
-public class Home extends javax.swing.JFrame {
-     
+@SpringBootApplication
+@Component
+public class Home extends JFrame  {
     protected JTextField textField ;
     DefaultListModel model = new DefaultListModel();
+    Integer Total=0;
     
+   @Autowired
+    private  ProduitRepository produitRepository ;
     
-    @Autowired
-   ProduitRepository produitRepository = new ProduitRepository();
    
+   
+
     /**
      * Creates new form Home
      */
-    public Home() {
+ 
+    public Home(ProduitRepository produitRepository) {
+        this.produitRepository = produitRepository;
         initComponents();
     }
 
@@ -57,7 +63,6 @@ public class Home extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         labelTotal = new javax.swing.JLabel();
         btnRemove = new javax.swing.JButton();
-        textField = new JTextField(10);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         btnAjouter =  new javax.swing.JButton("submit");
         
@@ -97,6 +102,7 @@ public class Home extends javax.swing.JFrame {
         });
          btnAjouter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                
                 btnAjouterActionPerformed(evt);
             }
         });
@@ -139,11 +145,6 @@ public class Home extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(19, 19, 19)    
-                        .addComponent( btnAjouter)
-                        .addGap(15, 15, 15)
-                        .addComponent( textField)
-                        .addGap(5, 5, 5)
-        
                     .addContainerGap(27, Short.MAX_VALUE))
         );
         panelPanierLayout.setVerticalGroup(
@@ -155,13 +156,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                  .addGap(19, 19, 19)
-                 .addComponent(btnRemove)
-               
-                .addGap(29, 29, 29)
-                .addComponent(textField)
-                // .addGroup(panelResultLayout.createSequentialGroup()
-                 .addGap(29, 29, 29)
-                 .addComponent(btnAjouter))         
+                 .addComponent(btnRemove))         
         );
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -246,7 +241,8 @@ public class Home extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
     private void btnPayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayerActionPerformed
         // TODO add your handling code here:
         Payment pay = new Payment();
@@ -264,35 +260,30 @@ public class Home extends javax.swing.JFrame {
             model.removeElementAt(index);
             }
     }//GEN-LAST:event_jButton1ActionPerformed
+    
+ 
+
+    
     private void btnAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayerActionPerformed
         // TODO add your handling code here:
-        String evenement = evt.getActionCommand();
+        String evenement = evt.getActionCommand();  
         if(evenement.equals("submit")){
-
-            int note = Integer.parseInt(textField.getText());
+           Integer note = Integer.parseInt(textField.getText());
             System.out.println("Changer de produit "+note);
-            
             //List produitall = produitRepository.findAll();
+            Produit produitOptional = produitRepository.findById(note);
             
+            int price = produitRepository.findByIdPrice(note).getPrice();
+             Total = Total+price;
             
-            Optional produitOptional = produitRepository.findById(note);
-            
-             System.out.println("Changer de produit "+ produitOptional);
-   
-            String produit = Optional.ofNullable(produitOptional)
-            .map(Object::toString)
-            .orElse(null);
-            
-            if(model.contains(produit)){
+            if(model.contains(produitOptional)){
                 System.out.println("Changer de produit");
             }
-            else {
-                
-             model.addElement(produit);
-             jList2.setModel(model);
-          System.out.println(produit);
-            }
-            
+            else {   
+                model.addElement(produitOptional);
+                jList2.setModel(model);
+                labelTotal.setText(String.valueOf(Total));
+            }   
         }
     }//GEN-LAST:event_btnPayerActionPerformed
 

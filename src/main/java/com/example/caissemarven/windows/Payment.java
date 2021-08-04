@@ -5,6 +5,8 @@
  */
 package com.example.caissemarven.windows;
 
+import com.example.caissemarven.windows.Home;
+
 /**
  *
  * @author user
@@ -180,8 +182,8 @@ public class Payment extends javax.swing.JFrame {
 
     private void btnAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnulerActionPerformed
         // TODO add your handling code here:
-        Home home = new Home();
-        home.setVisible(true);
+        //Home home = new Home();
+       // home.setVisible(true);
     }//GEN-LAST:event_btnAnnulerActionPerformed
 
     /**

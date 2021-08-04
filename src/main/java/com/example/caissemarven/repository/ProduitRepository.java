@@ -24,16 +24,21 @@ import org.springframework.stereotype.Repository;
  *
  * @author Dory
  */
-@Repository
 
+/**
+
+@Repository
+public interface ProduitRepository extends CrudRepository<Produit, Integer> {
+    List<Produit> findAll();
+ }
+
+**/
+@Repository
 public class ProduitRepository {
     
-    @Autowired
+   @Autowired
    private JdbcTemplate jdbcTemplate; 
-    
-    
     class ProduitRowMapper implements RowMapper <Produit>{
-        
         @Override 
         public Produit mapRow(ResultSet rs,int rowNum) throws SQLException{
             Produit produit = new Produit();
@@ -44,6 +49,34 @@ public class ProduitRepository {
             return produit;
         }
     }
+    
+      class ProduitPriceRowMapper implements RowMapper <Produit>{
+        @Override 
+        public Produit mapRow(ResultSet rs,int rowNum) throws SQLException{
+            Produit produit = new Produit();
+            produit.setPrice(rs.getInt("price"));
+      
+            return produit;
+        }
+    }
+    
+    public  Produit  findById(Integer id) {
+        return jdbcTemplate.queryForObject("select name,price from produit where id=?", new Object[] {
+                id
+            },
+            new BeanPropertyRowMapper <Produit> (Produit.class));
+    }
+    
+    
+     public  Produit  findByIdPrice(long id) {
+        return jdbcTemplate.queryForObject("select price from produit where id=?", new Object[] {
+                id
+            },
+            new BeanPropertyRowMapper <Produit> (Produit.class));
+    }
+    
+    
+    
     public int insert(Produit produit) {
         return jdbcTemplate.update("insert into produit (id, name, pric,string) " + "values(?, ?, ?,?)",
             new Object[] {
@@ -57,20 +90,10 @@ public class ProduitRepository {
     }
     
     
-    public Optional < Produit > findById(long id) {
-        return Optional.of(jdbcTemplate.queryForObject("select * from produit where id=?", new Object[] {
-                id
-            },
-            new BeanPropertyRowMapper <Produit> (Produit.class)));
-    }
+  
+ 
    
-    public Optional < Produit > findByIdPrice(long id) {
-        
-        return Optional.of(jdbcTemplate.queryForObject("select price from produit where id=?", new Object[] {
-                id
-            },
-            new BeanPropertyRowMapper <Produit> (Produit.class)));
-    }
+   
     
     
      
@@ -82,3 +105,4 @@ public class ProduitRepository {
     }
     
 }
+
